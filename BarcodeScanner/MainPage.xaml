@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:BarcodeScanner;assembly=BarcodeScanner"
+             x:Class="BarcodeScanner.MainPage">
+
+   
+    <ScrollView>
+    <FlexLayout Direction="Column"
+                AlignItems="Center"
+                JustifyContent="SpaceEvenly">
+        <Image HeightRequest="500"  x:Name="image" Source="{local:ImageResource BarcodeScanner.defautimage.jpg}" Aspect="AspectFit" />
+        <Button Text="Take Photo" Clicked="Button_Clicked" />
+    </FlexLayout>
+    </ScrollView>
+    
+
+</ContentPage>

@@ -62,26 +62,32 @@ namespace BarcodeScanner
             if (file == null)
                 return;
 
-            await DisplayAlert("File Location", file.Path, "OK");
-            //Stream stream = file.GetStream();
-            //byte[] bytes = new byte[stream.Length];
-            //stream.Read(bytes, 0, bytes.Length);
-            //stream.Seek(0, SeekOrigin.Begin);
-            //List<BarcodeResult> barCodeResultList= await BarcodeScanner.Mobile.Core.Methods.ScanFromImage(bytes);
-            //if (barCodeResultList != null && barCodeResultList.Count > 0)
-            //{
+            //await DisplayAlert("File Location", file.Path, "OK");
+            image.IsVisible = false;
+            loader.IsVisible = true;
+            Stream stream = file.GetStream();
+            byte[] bytes = new byte[stream.Length];
+            stream.Read(bytes, 0, bytes.Length);
+            stream.Seek(0, SeekOrigin.Begin);
+            List<BarcodeResult> barCodeResultList = await BarcodeScanner.Mobile.Core.Methods.ScanFromImage(bytes);
+            if (barCodeResultList != null && barCodeResultList.Count > 0)
+            {
 
-            //    using (var client = new WebClient())
-            //    {
-            //        client.Credentials = new NetworkCredential("product_ftp@thesat.co.uk", "123456");
-            //        client.UploadFile($"ftp://thesat.co.uk/{barCodeResultList.FirstOrDefault().DisplayValue}.png", WebRequestMethods.Ftp.UploadFile, file.Path);
-            //    }
-            //}
+                using (var client = new WebClient())
+                {
+                    client.Credentials = new NetworkCredential("product_ftp@thesat.co.uk", "123456");
+                    client.UploadFile($"ftp://thesat.co.uk/{barCodeResultList.FirstOrDefault().DisplayValue}.png", WebRequestMethods.Ftp.UploadFile, file.Path);
+                }
+            }
+
             image.Source = ImageSource.FromStream(() =>
             {
-                var stream = file.GetStream();
-                return stream;
+                return file.GetStream();
+                
             });
+
+            image.IsVisible = true;
+            loader.IsVisible = false;
         }
     }
 }

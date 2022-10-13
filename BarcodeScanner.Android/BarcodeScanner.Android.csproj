@@ -16,7 +16,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v12.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -94,7 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BarcodeScanner\BarcodeScanner.csproj">
-      <Project>{7F93C57A-81BB-4890-9F54-41DA13958156}</Project>
+      <Project>{1DC713CE-B081-49E7-9F4A-8402A6A96FBF}</Project>
       <Name>BarcodeScanner</Name>
     </ProjectReference>
   </ItemGroup>

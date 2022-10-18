@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:BarcodeScanner;assembly=BarcodeScanner"
-             
+             xmlns:local="clr-namespace:BarcodeScanner;assembly=BarcodeScanner" xmlns:gv="clr-namespace:BarcodeScanner.Mobile.XamarinForms;assembly=BarcodeScanner.Mobile.XamarinForms"
              x:Class="BarcodeScanner.MainPage">
 
 
@@ -13,28 +12,30 @@
             <Frame   BackgroundColor="Black" >
                 <FlexLayout JustifyContent="SpaceAround"
              Direction="Column" >
-                    <Label   TextColor="Green" FontSize="25" Text="Please take photo to upload image with barcode name" />
+                    <!--<Label   TextColor="Green" FontSize="25" Text="Please take photo to upload image with barcode name" />-->
                     <Frame  FlexLayout.Basis="60%" BackgroundColor="Black"  BorderColor="Red">
                     <FlexLayout  JustifyContent="Center"
              Direction="Column" >
-                        
-                            
-                                <Image    x:Name="image" Source="{local:ImageResource BarcodeScanner.defautimage.jpg}" Aspect="AspectFill" />
+
+                            <gv:CameraView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" OnDetected="CameraView_OnDetected" 
+                           TorchOn="False" VibrationOnDetected="False" ScanInterval="50" x:Name="Camera"/>
+                            <Image    x:Name="image" Source="{local:ImageResource BarcodeScanner.defautimage.jpg}" Aspect="AspectFill" />
                             <ActivityIndicator IsVisible="false" x:Name="loader" VerticalOptions="CenterAndExpand"  IsRunning="true" />
                             
                         
                     </FlexLayout>
                     </Frame>
-                    <Label  FlexLayout.AlignSelf="Center" TextColor="AliceBlue" FontSize="20" Text="Image is uploaded, Please take anothe photo" />
+                    <Button IsVisible="false" x:Name="RescanButton" FlexLayout.AlignSelf="Center"  Text="Rescan Barcode" Clicked="Button_Clicked" />
+                    <!--<Label  FlexLayout.AlignSelf="Center" TextColor="AliceBlue" FontSize="20" Text="Image is uploaded, Please take anothe photo" />-->
                     <!--<Button FlexLayout.Basis="10%"  Text="Take Photo" Clicked="Button_Clicked" />-->
-                    <Ellipse  FlexLayout.AlignSelf="Center" Stroke="Red" Fill="white"
+                    <!--<Ellipse  FlexLayout.AlignSelf="Center" Stroke="Red" Fill="white"
          StrokeThickness="4"
          WidthRequest="75"
          HeightRequest="75">
                         <Ellipse.GestureRecognizers>
                             <TapGestureRecognizer Tapped="Button_Clicked" />
                         </Ellipse.GestureRecognizers>
-                    </Ellipse>
+                    </Ellipse>-->
                 </FlexLayout>
                 <!--<FlexLayout Direction="Column"
                 >
